@@ -10,15 +10,14 @@ const setMpa = () => {
   const entry = {}
   const htmlWebpackPlugins = []
 
-  const entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'))
+  const entryFiles = glob.sync('./src/*/*.js')
 
-  entryFiles.map(v => {
+  entryFiles.forEach(v => {
     let pathName = v.match(/src\/(.*)\/index\.js/)
     const name = pathName && pathName[1]
 
     entry[name] = `./${pathName[0]}`
    
-    console.log(`./src/${name}/index.html`)
     htmlWebpackPlugins.push(
       new HtmlWebpackPlugin({
         template: `./src/${name}/index.html`,

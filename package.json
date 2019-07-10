@@ -7,7 +7,7 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "server": "node server.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.conf.js",
     "stats": "webpack seven$ webpack --profile --json > stats.json",
     "analyz": "NODE_ENV=production npm_config_report=true npm run build"
   },
@@ -16,16 +16,24 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "babel-loader": "^8.0.0-beta.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.5.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "transfer-webpack-plugin": "^0.1.4",
     "uglifyjs-webpack-plugin": "^2.0.1",
+    "url-loader": "^2.0.1",
     "webpack": "^4.26.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
@@ -39,5 +47,12 @@
     "cake-chart": "^0.2.3",
     "express": "^4.16.4",
     "lodash": "^4.17.11"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "ios > 7"
+  ]
 }
