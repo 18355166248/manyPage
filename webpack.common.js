@@ -21,13 +21,13 @@ module.exports = {
     }
   },
   output: {
-    filename:
-      process.env.NODE_ENV === 'production'
-        ? '[name].[chunkhash].js'
-        : '[name].[hash].js',
+    // filename:
+    //   process.env.NODE_ENV === 'production'
+    //     ? '[name].[chunkhash].js'
+    //     : '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
     // 修改打包出口，在最外级目录打包出一个 index.js 文件，我们 import 默认会指向这个文件
-    // publicPath: '/dist/'
+    publicPath: '/dist/'
   },
   module: {
     rules: [

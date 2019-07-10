@@ -17,11 +17,12 @@ const setMpa = () => {
     const name = pathName && pathName[1]
 
     entry[name] = `./${pathName[0]}`
-    // entry[name] = v
+   
+    console.log(`./src/${name}/index.html`)
     htmlWebpackPlugins.push(
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, `./src/${pathName}/index.html`),
-        filename: `${pathName}.html`,
+        template: `./src/${name}/index.html`,
+        filename: `${name}.html`,
         chunks: [pathName],
         inject: true
       })
