@@ -4,10 +4,10 @@ var glob = require('glob')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 var TransferWebpackPlugin = require('transfer-webpack-plugin')
-var autoprefixer = require('autoprefixer')
 var os = require('os')
 var portfinder = require('portfinder')
 var fs = require('fs')
+
 var ports = fs.readFileSync('./port.json', 'utf8')
 ports = JSON.parse(ports)
 portfinder.basePort = '8080'
@@ -16,6 +16,7 @@ portfinder.getPort(function(err, port) {
   ports = JSON.stringify(ports, null, 4)
   fs.writeFileSync('./port.json', ports)
 })
+
 ///////////////////获取本机ip///////////////////////
 function getIPAdress() {
   var interfaces = os.networkInterfaces()
@@ -34,7 +35,6 @@ function getIPAdress() {
   }
 }
 var host = getIPAdress()
-
 //动态添加入口
 
 var entryObj
@@ -48,21 +48,21 @@ function getEntry() {
     var n = name.slice(start, end)
     n = n.split('/')[1]
     eArr.push(name)
-    eArr.push('babel-polyfill')
+    // eArr.push('babel-polyfill')
     entry[n] = eArr
   })
   entryObj = entry
+  console.log(entry)
   return entry
 }
 //动态生成html
 //获取html-webpack-plugin参数的方法
-var getHtmlConfig = function(name, chunks) {
+var getHtmlConfig = function(name) {
   return {
     template: `./src/pages/${name}.html`,
     filename: `pages/${name}.html`,
     inject: true,
-    hash: false,
-    chunks: [name]
+    hash: false
   }
 }
 module.exports = {
@@ -97,18 +97,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                autoprefixer({
-                  browsers: [
-                    'ie >= 8',
-                    'Firefox >= 20',
-                    'Safari >= 5',
-                    'Android >= 4',
-                    'Ios >= 6',
-                    'last 4 version'
-                  ]
-                })
-              ]
+              plugins: []
             }
           }
         ]
@@ -123,18 +112,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                autoprefixer({
-                  browsers: [
-                    'ie >= 8',
-                    'Firefox >= 20',
-                    'Safari >= 5',
-                    'Android >= 4',
-                    'Ios >= 6',
-                    'last 4 version'
-                  ]
-                })
-              ]
+              plugins: []
             }
           },
           'sass-loader'

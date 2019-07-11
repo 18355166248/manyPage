@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --open --config webpack.dev.conf.js",
     "server": "node server.js",
     "build": "webpack --config webpack.prod.conf.js",
     "stats": "webpack seven$ webpack --profile --json > stats.json",
@@ -44,6 +44,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@babel/runtime": "^7.5.4",
     "cake-chart": "^0.2.3",
     "express": "^4.16.4",
     "lodash": "^4.17.11"
