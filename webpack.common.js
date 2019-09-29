@@ -21,6 +21,7 @@ module.exports = {
     }
   },
   output: {
+    filename: '[name].js',
     // filename:
     //   process.env.NODE_ENV === 'production'
     //     ? '[name].[chunkhash].js'

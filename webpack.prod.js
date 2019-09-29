@@ -17,13 +17,19 @@ const setMpa = () => {
     const name = pathName && pathName[1]
 
     entry[name] = `./${pathName[0]}`
-   
+
+    console.log(`./src/${name}/index.html`)
     htmlWebpackPlugins.push(
       new HtmlWebpackPlugin({
         template: `./src/${name}/index.html`,
         filename: `${name}.html`,
         chunks: [pathName],
-        inject: true
+        inject: true,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        chunks: [name]
       })
     )
   })
@@ -44,7 +50,7 @@ module.exports = merge(common, {
   plugins: [
     new UglifyJSPlugin({
       sourceMap: true
-    }),
+    })
     // new webpack.DefinePlugin({
     //   'process.env.NODE_ENV': JSON.stringify('production')
     // })
