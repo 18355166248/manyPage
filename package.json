@@ -47,7 +47,7 @@
     "@babel/runtime": "^7.5.4",
     "cake-chart": "^0.2.3",
     "express": "^4.16.4",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.21"
   },
   "browserslist": [
     "defaults",
